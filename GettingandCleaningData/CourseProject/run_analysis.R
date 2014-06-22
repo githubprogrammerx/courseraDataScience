@@ -85,6 +85,9 @@ TotalDataset<-cbind.data.frame(subjects,y_activity,x_features,body_acc_x,body_ac
                                 total_acc_x,total_acc_y,total_acc_z)
 
 ## extract means and standard errors for the three dimensions for body Acceleration
+
+TidyDataset_colNames<-C("Subject.ID","Activity.ID","tBodyAcc_MEAN_x","tBodyAcc_std_X")
+
 TidyDataset<-cbind.data.frame(   TotalDataset[,"Subject.ID"],
                                               TotalDataset[,"Activity.ID"],
                                                 
@@ -263,5 +266,84 @@ TotalDataset[,"fBodyBodyGyroJerkMag.std.."]
 
 )
 write.table(TidyDataset,file="C:/Users/ptimusk/Documents/GitHub/courseraDataScience/GettingandCleaningData/CourseProject/TidyDataset.txt")
+subjectstemp <- matrix(ncol=33, nrow=30)
+variables1<-seq.int(3,68,2)
+variables1
+for (i in 1:30){
+                for ( j in variables1)
+                                {
+                            
+                                
+                                k<-(j-1)/2
+                              
+                                subjectstemp[i,k]<-ave(subset(TidyDataset, TidyDataset[,1]==i )[,j])[1]
+                                }
+                }
+subjectaverages_colNames<-c("Subject.ID","tBodyAcc_mean_X",
+                                         "tBodyAcc_mean_Y",
+                                         "tBodyAcc_mean_Z",
+                                         "tGravityAcc_mean_X",
+                                         "tGravityAcc_mean_Y",
+                                         "tGravityAcc_mean_Z",
+                                         "tBodyAccJerk_mean_X",
+                                         "tBodyAccJerk_mean_Y",
+                                         "tBodyAccJerk_mean_Z",
+                                         "tBodyGyro_mean_X",
+                                         "tBodyGyro_mean_Y",
+                                         "tBodyGyro_mean_Z",
+                                         "tBodyGyroJerk_mean_X",
+                                         "tBodyGyroJerk_mean_Y",
+                                         "tBodyGyroJerk_mean_Z",
+                                         "tBodyAccMag_mean",
+                                         "tGravityAccMag_mean",
+                                         "tBodyAccJerkMag_mean",
+                                         "tBodyGyroMag_mean",
+                                         "tBodyGyroJerkMag_mean",
+                                         "fBodyAcc_mean_X",
+                                         "fBodyAcc_mean_Y",
+                                         "fBodyAcc_mean_Z",
+                                         "fBodyAccJerk_mean_X",
+                                         "fBodyAccJerk_mean_Y",
+                                         "fBodyAccJerk_mean_Z", 
+                                         "fBodyGyro_mean_X",
+                                         "fBodyGyro_mean_Y",
+                                         "fBodyGyr_mean_Z",
+                                         "fBodyAccMag_Mean",
+                                         "fBodyBodyAccJerkMag_mean",
+                                         "fBodyBodyGyroMag_mean",
+                                         "fBodyBodyGyroJerkMag_mean")
 
+subjectaverages<-cbind.data.frame(Subject.ID=c(1:30),subjectstemp)
+colnames(subjectaverages)<-subjectaverages_colNames
+output2<-matrix(ncol=2, nrow=30)
 
+for (i in 2:34){
+                        output2<-cbind(subjectaverages[,1],subjectaverages[,i])
+                        NameVar<-c(subjectaverages_colNames[1],subjectaverages_colNames[i])
+                        colnames(output2)<-NameVar
+                      write.table(output2,file="C:/Users/ptimusk/Documents/GitHub/courseraDataScience/GettingandCleaningData/CourseProject/SubjectAveragesCodeBookPart1.txt")
+                }
+# Now calculate activity averages
+activitiestemp<-matrix(ncol=33, nrow=6)
+for (i in 1:6){
+        for ( j in variables1)
+        {
+                
+              
+                k<-(j-1)/2
+                
+      activitiestemp[i,k]<-ave(subset(TidyDataset, TidyDataset[,2] == i, )[,j])[1]
+                             
+             }
+}
+activitiesaverages<-cbind.data.frame(Acivity.ID=c(1:6),activitiestemp)
+activityaverages_colNames<-subjectaverages_colNames
+colnames(activitiesaverages)<-activityaverages_colNames
+output3<-matrix(ncol=2, nrow=6)
+
+for (i in 2:34){
+        output2<-cbind(activitiesaverages[,1],activitiesaverages[,i])
+        NameVar<-c(activityaverages_colNames[1],activityaverages_colNames[i])
+        colnames(output3)<-NameVar
+        write.table(output3,file="C:/Users/ptimusk/Documents/GitHub/courseraDataScience/GettingandCleaningData/CourseProject/ActivityAveragesCodeBookPart2.txt")
+                }
