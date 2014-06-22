@@ -83,3 +83,185 @@ subjects<-rbind.data.frame(subject_test,subject_train)
 TotalDataset<-cbind.data.frame(subjects,y_activity,x_features,body_acc_x,body_acc_y,body_acc_z,
                                 body_gyro_x,body_gyro_y,body_gyro_z,
                                 total_acc_x,total_acc_y,total_acc_z)
+
+## extract means and standard errors for the three dimensions for body Acceleration
+TidyDataset<-cbind.data.frame(   TotalDataset[,"Subject.ID"],
+                                              TotalDataset[,"Activity.ID"],
+                                                
+                                              #body acceleration-tBodyAcc-XYZ
+                                              
+                                                TotalDataset[,"tBodyAcc.mean...X"],
+                                                TotalDataset[,"tBodyAcc.std...X"],
+
+                                                TotalDataset[,"tBodyAcc.mean...Y"],
+                                                TotalDataset[,"tBodyAcc.std...Y"],
+                                                
+                                                TotalDataset[,"tBodyAcc.mean...Z"],
+                                                TotalDataset[,"tBodyAcc.std...Z"],
+                                                
+                                                #tGravityAcc-XYZ
+                                                
+                                                TotalDataset[,"tGravityAcc.mean...X"],
+                                                TotalDataset[,"tGravityAcc.std...X"],
+                                                
+                                                TotalDataset[,"tGravityAcc.mean...Y"],
+                                                TotalDataset[,"tGravityAcc.std...Y"],
+                                                
+                                                TotalDataset[,"tGravityAcc.mean...Z"],
+                                                TotalDataset[,"tGravityAcc.std...Z"],
+
+
+#tBodyAccJerk-XYZ
+
+TotalDataset[,"tBodyAccJerk.mean...X"],
+TotalDataset[,"tBodyAccJerk.std...X"],
+
+TotalDataset[,"tBodyAccJerk.mean...Y"],
+TotalDataset[,"tBodyAccJerk.std...Y"],
+
+TotalDataset[,"tBodyAccJerk.mean...Z"],
+TotalDataset[,"tBodyAccJerk.std...Z"],
+
+
+#tBodyGyro-XYZ
+
+
+TotalDataset[,"tBodyGyro.mean...X"],
+TotalDataset[,"tBodyGyro.std...X"],
+
+TotalDataset[,"tBodyGyro.mean...Y"],
+TotalDataset[,"tBodyGyro.std...Y"],
+
+TotalDataset[,"tBodyGyro.mean...Z"],
+TotalDataset[,"tBodyGyro.std...Z"],
+
+
+
+#tBodyGyroJerk-XYZ
+
+
+
+TotalDataset[,"tBodyGyroJerk.mean...X"],
+TotalDataset[,"tBodyGyroJerk.std...X"],
+
+TotalDataset[,"tBodyGyroJerk.mean...Y"],
+TotalDataset[,"tBodyGyroJerk.std...Y"],
+
+TotalDataset[,"tBodyGyroJerk.mean...Z"],
+TotalDataset[,"tBodyGyroJerk.std...Z"],
+
+
+
+#tBodyAccMag
+
+
+TotalDataset[,"tBodyAccMag.mean.."],
+TotalDataset[,"tBodyAccMag.std.."],
+
+
+
+
+
+#tGravityAccMag
+
+
+TotalDataset[,"tGravityAccMag.mean.."],
+TotalDataset[,"tGravityAccMag.std.."],
+
+
+
+
+#tBodyAccJerkMag
+
+
+TotalDataset[,"tBodyAccJerkMag.mean.."],
+TotalDataset[,"tBodyAccJerkMag.std.."],
+
+
+
+#tBodyGyroMag
+
+
+TotalDataset[,"tBodyGyroMag.mean.."],
+TotalDataset[,"tBodyGyroMag.std.."],
+
+
+
+#tBodyGyroJerkMag
+
+
+TotalDataset[,"tBodyGyroJerkMag.mean.."],
+TotalDataset[,"tBodyGyroJerkMag.std.."],
+
+
+
+#fBodyAcc-XYZ
+
+
+TotalDataset[,"fBodyAcc.mean...X"],
+TotalDataset[,"fBodyAcc.std...X"],
+
+TotalDataset[,"fBodyAcc.mean...Y"],
+TotalDataset[,"fBodyAcc.std...Y"],
+
+TotalDataset[,"fBodyAcc.mean...Z"],
+TotalDataset[,"fBodyAcc.std...Z"],
+
+
+#fBodyAccJerk-XYZ
+
+
+TotalDataset[,"fBodyAccJerk.mean...X"],
+TotalDataset[,"fBodyAccJerk.std...X"],
+
+TotalDataset[,"fBodyAccJerk.mean...Y"],
+TotalDataset[,"fBodyAccJerk.std...Y"],
+
+TotalDataset[,"fBodyAccJerk.mean...Z"],
+TotalDataset[,"fBodyAccJerk.std...Z"],
+
+
+
+#fBodyGyro-XYZ
+
+
+TotalDataset[,"fBodyGyro.mean...X"],
+TotalDataset[,"fBodyGyro.std...X"],
+
+TotalDataset[,"fBodyGyro.mean...Y"],
+TotalDataset[,"fBodyGyro.std...Y"],
+
+TotalDataset[,"fBodyGyro.mean...Z"],
+TotalDataset[,"fBodyGyro.std...Z"],
+
+
+
+#fBodyAccMag
+
+
+TotalDataset[,"fBodyAccMag.mean.."],
+TotalDataset[,"fBodyAccMag.std.."],
+
+#fBodyBodyAccJerkMag
+
+TotalDataset[,"fBodyBodyAccJerkMag.mean.."],
+TotalDataset[,"fBodyBodyAccJerkMag.std.."],
+
+
+
+
+#fBodyBodyGyroMag
+
+TotalDataset[,"fBodyBodyGyroMag.mean.."],
+TotalDataset[,"fBodyBodyGyroMag.std.."],
+
+#fBodyBodyGyroJerkMag
+
+TotalDataset[,"fBodyBodyGyroJerkMag.mean.."],
+TotalDataset[,"fBodyBodyGyroJerkMag.std.."]
+
+
+)
+write.table(TidyDataset,file="C:/Users/ptimusk/Documents/GitHub/courseraDataScience/GettingandCleaningData/CourseProject/TidyDataset.txt")
+
+
